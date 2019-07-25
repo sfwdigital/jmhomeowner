@@ -1,20 +1,43 @@
-<?php include 'includes/header.php'; ?>
+<?php
+include 'includes/header.php';
+include 'includes/session.php';
+?>
 
-		<div class="content-container">
-			<div class="grid-container">
-				<div class="grid-x">
-					<div class="cell">
-						<img src="http://placehold.it/400x200?text=logo" alt="Johns Manville" />
-					</div>
-				</div>
-				<div class="grid-x">
-					<div class="cell">
-						<h1>FYI: Find Your Insulation</h1>
-						<p class="lead">Home Insulation Guide</p>
-						<a class="button secondary" title="Get Started" href="/menu.php">Get Started</a>
-					</div>
-				</div>
-			</div>
-		</div>
+<div id="insulationdata">
+	<?php include 'intro.php'; ?>
+</div>
 
-		<?php include 'includes/footer.php'; ?>
+
+
+
+<?php include 'includes/footer.php'; ?>
+<script type="text/javascript">
+	jQuery(function($) {
+
+
+	$( "#getstarted" ).click(function() {
+		$("#insulationdata").load( "menu.php" );
+	});
+
+
+		// $(document).ready(function(){
+		// })
+
+		$.fn.jminsulation = function() {
+			var rvalue = $('#location-field').val();
+			var project = $('#project-select option:selected').val();
+			$.ajax({
+				type: "POST",
+				url: 'attic.php',
+				data: ({rvalue: rvalue, project: project}),
+				success: function(response){
+					$("#insulationdata").html(response);
+				}
+			});
+		}
+
+
+
+
+	});
+</script>

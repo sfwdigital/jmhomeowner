@@ -1,4 +1,12 @@
-<?php include 'includes/header.php'; ?>
+<?php
+include 'includes/header.php';
+include 'includes/session.php';
+
+// echo $rvalue = $_POST['rvalue'];
+// echo $project = $_POST['project'];
+echo $rvalue;
+echo $project;
+?>
 
 		<?php include 'header.php'; ?>
 		<div class="grid-container">
@@ -8,6 +16,9 @@
 					<div class="grid-container">
 						<div class="grid-x">
 							<div class="cell">
+
+
+
 								<h4>Attic Area</h4>
 								<p>Enter multiple entries if attic layout is not a standard rectangle like the example above or if known, enter the square footage.</p>
 								<form>

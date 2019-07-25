@@ -1,4 +1,6 @@
-<?php include 'includes/header.php'; ?>
+
+
+
 
 		<div class="grid-x">
 			<!-- Left Side -->
@@ -15,7 +17,7 @@
 					<div class="grid-x">
 						<div class="cell">
 
-							<select>
+							<select id="project-select">
 							  <option value="attic">Attic</option>
 							  <option value="bathroom">Bathroom<br /> Laundry<br /> Kitchen</option>
 							  <option value="basement">Basement</option>
@@ -62,7 +64,7 @@
 						<div class="cell">
 							<form>
 								<div class="input-group">
-									<input class="input-group-field" placeholder="Enter Zip Code..." type="text">
+									<input class="input-group-field" id="location-field" placeholder="Enter Zip Code..." type="text">
 									<div class="input-group-button">
 										<input type="submit" class="button" value="Submit">
 										<input type="submit" class="button secondary" value="Find Me">
@@ -96,10 +98,20 @@
 					</div>
 					<div class="grid-x align-right">
 						<div class="cell shrink">
-						<a href="#" class="button" title="Next">Next</a>
+
+						<a  id="next-button" class="button" title="Next">Next</a>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<?php include 'includes/footer.php'; ?>
+
+</div>
+<script type="text/javascript">
+  jQuery(function($) {
+		$( "#next-button" ).click(function() {
+			$.fn.jminsulation();
+			console.log('dafsd');
+		});
+  });
+</script>
