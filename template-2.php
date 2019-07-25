@@ -1,5 +1,10 @@
-					<!-- Template 1 -->
+
+
+
+					<!-- Template 2 -->
 					<div class="grid-container">
+
+						
 						<div class="grid-x grid-margin-x">
 							<div class="cell medium-18">
 								<div class="product-description-wrapper">
@@ -18,7 +23,12 @@
 								<img src="http://placehold.it/340" alt="Scale Model of Product" />
 							</div>
 						</div>
-						<div class="grid-x grid-margin-x">
+
+
+
+
+
+						<!-- <div class="grid-x grid-margin-x">
 							<div class="cell medium-16">
 								<div class="main-product-card">
 									<div class="grid-x grid-padding-x">
@@ -48,7 +58,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="cell medium-8">
 								<div class="project-card">
 									<div class="project-card-content">
@@ -71,5 +81,6 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
+
 					</div>

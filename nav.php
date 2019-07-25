@@ -2,7 +2,7 @@
 				<div class="cell medium-10">
 					<div class="grid-x">
 						<div class="cell shrink">
-							<a href="/menu.php" class="button" title="Back">Back</a>
+							<a class="button" id="next-button" title="Back">Back</a>
 						</div>
 					</div>
 				</div>
@@ -14,3 +14,14 @@
 					</div>
 				</div>
 			</div>
+
+
+			<script type="text/javascript">
+			  jQuery(function($) {
+
+					$( "#next-button" ).click(function() {
+						$("#insulationdata").load( "menu.php" );
+
+					});
+			  });
+			</script>

@@ -1,7 +1,7 @@
+<?php include 'includes/session.php';
 
 
-
-
+ ?>
 		<div class="grid-x">
 			<!-- Left Side -->
 			<div class="cell medium-12">
@@ -43,7 +43,7 @@
 					</div>
 					<div class="grid-x">
 						<div class="cell auto">
-							<a href="/index.php" class="button" title="Back">Back</a>
+							<a class="button" id="back-button" title="Back">Back</a>
 						</div>
 					</div>
 				</div>
@@ -64,7 +64,7 @@
 						<div class="cell">
 							<form>
 								<div class="input-group">
-									<input class="input-group-field" id="location-field" placeholder="Enter Zip Code..." type="text">
+									<input class="input-group-field" id="location-field" placeholder="Enter Zip Code..." type="text" value="R-11">
 									<div class="input-group-button">
 										<input type="submit" class="button" value="Submit">
 										<input type="submit" class="button secondary" value="Find Me">
@@ -104,14 +104,18 @@
 				</div>
 			</div>
 		</div>
-
-
 </div>
+
 <script type="text/javascript">
   jQuery(function($) {
 		$( "#next-button" ).click(function() {
-			$.fn.jminsulation();
-			console.log('dafsd');
+			var progress = localStorage['progress'];
+			localStorage['progress'] = "1";
+
+			var rvalue = $('#location-field').val();
+			var project = $('#project-select option:selected').val();
+			var link = 'attic.php';
+			$.fn.jminsulation(link, rvalue, project);
 		});
   });
 </script>

@@ -1,11 +1,10 @@
 <?php
-include 'includes/header.php';
+// include 'includes/header.php';
 include 'includes/session.php';
 
 // echo $rvalue = $_POST['rvalue'];
 // echo $project = $_POST['project'];
-echo $rvalue;
-echo $project;
+
 ?>
 
 		<?php include 'header.php'; ?>
@@ -16,8 +15,6 @@ echo $project;
 					<div class="grid-container">
 						<div class="grid-x">
 							<div class="cell">
-
-
 
 								<h4>Attic Area</h4>
 								<p>Enter multiple entries if attic layout is not a standard rectangle like the example above or if known, enter the square footage.</p>
@@ -45,8 +42,8 @@ echo $project;
 										<div class="grid-x">
 											<fieldset class="cell auto">
 												<legend>Insulation Type</legend>
-												<input type="radio" name="insulation_type" value="Blow In" id="insulation_type_blowin"><label for="insulation_type_blowin">Blow In</label>
-												<input type="radio" name="insulation_type" value="Batt" id="insulation_type_batt"><label for="insulation_type_batt">Batt</label>
+												<input type="radio" value="blow" name="insulation_type" value="Blow In" id="insulation_type_blowin" checked><label for="insulation_type_blowin" >Blow In</label>
+												<input type="radio" value="batt" name="insulation_type" value="Batt" id="insulation_type_batt"><label for="insulation_type_batt">Batt</label>
 											</fieldset>
 										</div>
 										<!-- only show if insulation_type = blowin -->
@@ -78,12 +75,48 @@ echo $project;
 				</div>
 				<!-- end Left Side -->
 				<!-- Right Side -->
+
+
 				<div class="cell medium-14">
 					<!-- If insulation_type = batt show Template 1 -->
 					<!-- If insulation_type = blowin show Template 2 -->
-					<?php include 'template-2.php'; ?>
+
+					<div id="insulation_type">
+
+						<?php include 'template-2.php'; ?>
+
+					</div>
 				</div>
 			</div>
-			<?php include 'nav.php'; ?>
+			<?php include 'nav.php';	?>
 		</div>
-		<?php include 'includes/header.php'; ?>
+
+
+		<script type="text/javascript">
+			jQuery(function($) {
+
+				$("input[name=insulation_type]").change(function(){
+					var type = $('input[name=insulation_type]:checked').val();
+					var blowlink = 'template-2.php';
+					var battlink = 'template-1.php';
+					if (type == 'blow'){
+						$.fn.jminsulationtype(blowlink);
+					}
+					if (type == 'batt'){
+						$.fn.jminsulationtype(battlink);
+					}
+				});
+
+				$.fn.jminsulationtype = function(link) {
+					$.ajax({
+						type: "POST",
+						url: link,
+						// data: ({rvalue: rvalue, project: project}),
+						success: function(response){
+							$("#insulation_type").html(response);
+						}
+					});
+				}
+
+			});
+		</script>
