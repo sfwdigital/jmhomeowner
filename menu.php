@@ -1,14 +1,5 @@
-<!doctype html>
-<html class="no-js" lang="en" dir="ltr">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Johns Manville - FYI: Find Your Insulation</title>
-		<link rel="stylesheet" href="css/app.css">
-		<script src="node_modules/jquery/dist/jquery.min.js"></script>
-	</head>
-	<body>
+<?php include 'includes/header.php'; ?>
+
 		<div class="grid-x">
 			<!-- Left Side -->
 			<div class="cell medium-12">
@@ -23,14 +14,17 @@
 				<div class="grid-container">
 					<div class="grid-x">
 						<div class="cell">
-							<ul>
-								<li><a href="/attic.php">Attic</a></li>
-								<li><a href="/bathroom.php">Bathroom<br /> Laundry<br /> Kitchen</a></li>
-								<li><a href="/basement.php">Basement</a></li>
-								<li><a href="/bedroom.php">Bedroom<br /> Study<br /> Nursery</a></li>
-								<li><a href="/crawlspace.php">Crawlspace</a></li>
-								<li><a href="/garage.php">Garage</a></li>
-							</ul>
+
+							<select>
+							  <option value="attic">Attic</option>
+							  <option value="bathroom">Bathroom<br /> Laundry<br /> Kitchen</option>
+							  <option value="basement">Basement</option>
+								<option value="bedroom">Bedroom<br /> Study<br /> Nursery</option>
+							  <option value="crawlspace">Crawlspace</option>
+								<option value="garage">Garage</option>
+							</select>
+
+
 						</div>
 					</div>
 					<div class="grid-x align-right">
@@ -104,11 +98,8 @@
 						<div class="cell shrink">
 						<a href="#" class="button" title="Next">Next</a>
 					</div>
-				</div>		
+				</div>
 			</div>
-		</div>	
-		<script src="node_modules/foundation-sites/dist/js/foundation.min.js"></script>
-		<script src="js/app.js"></script>
-		<script src="js/js-min.js"></script>
-	</body>
-</html>
+		</div>
+
+		<?php include 'includes/footer.php'; ?>
