@@ -1,4 +1,14 @@
-<?php include 'includes/header.php';?>
+<?php
+
+include 'includes/header.php';
+
+?>
+
+<link rel="stylesheet" href="findjm/leaflet-min.css" />
+<script src="findjm/leaflet.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
 <div id="insulationdata">
 	<?php include 'intro.php'; ?>
@@ -11,6 +21,10 @@
 
 		$( "#getstarted" ).click(function() {
 			$("#insulationdata").load( "menu.php" );
+		});
+
+		$( "#map-next" ).click(function() {
+			$("#insulationdata").load( "map.php" );
 		});
 
 		$.fn.jminsulation = function(link, rvalue, project) {

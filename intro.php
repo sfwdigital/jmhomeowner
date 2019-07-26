@@ -7,7 +7,7 @@
     </div>
     <div class="grid-x">
       <div class="cell">
-        <h1>FYI: Find Your Insulation</h1>
+        <h1>Find Your Insulation</h1>
         <p class="lead">Home Insulation Guide</p>
         <a class="button secondary" id="getstarted" title="Get Started">Get Started</a>
       </div>

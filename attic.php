@@ -1,9 +1,6 @@
 <?php
-// include 'includes/header.php';
-include 'includes/session.php';
 
-// echo $rvalue = $_POST['rvalue'];
-// echo $project = $_POST['project'];
+include 'includes/session.php';
 
 ?>
 
@@ -23,40 +20,40 @@ include 'includes/session.php';
 										<div class="grid-x grid-padding-x">
 											<div class="medium-12 cell">
 												<label>Width <small>(in.)</small>
-													<input type="number" required="">
+													<input type="number" class="width" required="">
 												</label>
 											</div>
 											<div class="medium-12 cell">
 												<label>Length <small>(in.)</small>
-													<input type="number" required="">
+													<input type="number" class="length" required="">
 												</label>
 											</div>
 										</div>
 										<div class="grid-x grid-padding-x">
 											<div class="medium-18 cell">
 												<label>Square Footage <small>(optional)</small>
-													<input type="text">
+													<input type="text" id="squarefeet">
 												</label>
 											</div>
 										</div>
 										<div class="grid-x">
 											<fieldset class="cell auto">
 												<legend>Insulation Type</legend>
-												<input type="radio" value="blow" name="insulation_type" value="Blow In" id="insulation_type_blowin" checked><label for="insulation_type_blowin" >Blow In</label>
-												<input type="radio" value="batt" name="insulation_type" value="Batt" id="insulation_type_batt"><label for="insulation_type_batt">Batt</label>
+												<input type="radio" value="blow" name="insulation_type" value="Blow In" id="insulation_type_blowin" ><label for="insulation_type_blowin" >Blow In</label>
+												<input type="radio" value="batt" name="insulation_type" value="Batt" id="insulation_type_batt" checked><label for="insulation_type_batt">Batt</label>
 											</fieldset>
 										</div>
 										<!-- only show if insulation_type = blowin -->
-										<div class="grid-x">
+										<div class="grid-x blow-insulation">
 											<fieldset class="cell auto">
 												<legend>Adding to Existing Insulation?</legend>
-												<input type="radio" name="insulation_adding" value="Yes" id="insulation_adding_yes"><label for="insulation_adding_yes">Yes</label>
-												<input type="radio" name="insulation_adding" value="No" id="insulation_adding_no"><label for="insulation_adding_no">No</label>
+												<input type="radio" name="insulation_adding" value="yes" id="insulation_adding_yes"><label for="insulation_adding_yes">Yes</label>
+												<input type="radio" name="insulation_adding" value="no" id="insulation_adding_no" checked><label for="insulation_adding_no">No</label>
 											</fieldset>
 										</div>
 										<!-- end -->
 										<!-- only show if insulation_adding = yes -->
-										<div class="grid-x grid-padding-x">
+										<div class="grid-x grid-padding-x blow-depth">
 											<div class="medium-12 cell">
 												<label>Avg. Depth <small>(in.)</small>
 													<input type="number">
@@ -83,7 +80,6 @@ include 'includes/session.php';
 
 					<div id="insulation_type">
 
-						<?php include 'template-2.php'; ?>
 
 					</div>
 				</div>
@@ -94,29 +90,84 @@ include 'includes/session.php';
 
 		<script type="text/javascript">
 			jQuery(function($) {
+				$( ".blow-depth" ).hide();
+				$( ".blow-insulation" ).hide();
 
-				$("input[name=insulation_type]").change(function(){
-					var type = $('input[name=insulation_type]:checked').val();
-					var blowlink = 'template-2.php';
-					var battlink = 'template-1.php';
-					if (type == 'blow'){
-						$.fn.jminsulationtype(blowlink);
-					}
-					if (type == 'batt'){
-						$.fn.jminsulationtype(battlink);
-					}
-				});
 
-				$.fn.jminsulationtype = function(link) {
+				$(document).ready(function(){
+					var link = 'template-1.php'
+					$.fn.jminsulationtype(link);
+		    });
+
+
+
+				$.fn.updateTotal = function() {
+				  var width = parseInt($('.width').val());
+				  var length = parseInt($('.length').val());
+				  if (isNaN(width) || isNaN(length)) {
+				    $('#squarefeet').val('Both inputs must be numbers');
+				  } else {
+						var squarefootage = (((width * length)/12)/12).toFixed(2);
+						$('#squarefeet').val(squarefootage);
+				  }
+				};
+
+				$.fn.jminsulationtype = function(link, squarefootage) {
+					var project = '<?php echo $project ?>';
+					var rvalue = '<?php echo $rvalue?>';
 					$.ajax({
 						type: "POST",
 						url: link,
-						// data: ({rvalue: rvalue, project: project}),
+						data: ({squarefootage: squarefootage, project: project, rvalue: rvalue}),
 						success: function(response){
 							$("#insulation_type").html(response);
 						}
 					});
 				}
+
+				$.fn.extra_insulation = function(link) {
+					var type = $('input[name=insulation_adding]:checked').val();
+					if (type == 'yes'){
+						$( ".blow-depth" ).show('fast');
+					}
+					if (type == 'no'){
+						$( ".blow-depth" ).hide('fast');
+					}
+				};
+
+				$.fn.insulation_type = function(link) {
+					var type = $('input[name=insulation_type]:checked').val();
+					var blowlink = 'template-2.php';
+					var battlink = 'template-1.php';
+					var squarefootage = $('#squarefeet').val();
+					if (type == 'blow'){
+						$.fn.jminsulationtype(blowlink, squarefootage);
+						$( ".blow-insulation" ).show('fast');
+					}
+					if (type == 'batt'){
+						$.fn.jminsulationtype(battlink, squarefootage);
+						$( ".blow-insulation" ).hide('fast');
+					}
+				};
+
+				$('.width').focusout(function() {
+			    $.fn.updateTotal();
+					$.fn.insulation_type();
+				});
+
+				$('.length').focusout(function() {
+					$.fn.updateTotal();
+					$.fn.insulation_type();
+				});
+
+				$("input[name=insulation_type]").change(function(){
+					$.fn.updateTotal();
+					$.fn.insulation_type();
+				});
+
+				$("input[name=insulation_adding]").change(function(){
+					$.fn.extra_insulation();
+				});
 
 			});
 		</script>

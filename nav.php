@@ -9,7 +9,7 @@
 				<div class="cell medium-14">
 					<div class="grid-x align-right">
 						<div class="cell shrink">
-							<a href="#" class="button" title="Next">Next</a>
+							<a id="map-next" class="button" title="Next">Next</a>
 						</div>
 					</div>
 				</div>
@@ -18,10 +18,9 @@
 
 			<script type="text/javascript">
 			  jQuery(function($) {
-
-					$( "#next-button" ).click(function() {
-						$("#insulationdata").load( "menu.php" );
-
+					$( "#map-next" ).click(function() {
+						console.log('etst');
+						$("#insulationdata").load( "map.php" );
 					});
 			  });
 			</script>
