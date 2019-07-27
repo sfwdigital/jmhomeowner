@@ -11,7 +11,9 @@ include 'includes/header.php';
 
 
 <div id="insulationdata">
-	<?php include 'intro.php'; ?>
+	<?php
+	include 'menu.php'; 
+	?>
 </div>
 
 <?php include 'includes/footer.php'; ?>

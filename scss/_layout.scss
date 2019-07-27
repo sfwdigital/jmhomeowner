@@ -17,7 +17,6 @@ p{
 }
 
 // FORMS
-
 label{
 	color: $primary-color;
 }
@@ -39,6 +38,51 @@ select{
 // HEADER
 header{
 	margin-top: 20px;
+}
+
+.left-title{
+  position: relative;
+  .title-back{
+		background-color: $primary-color;
+		border-radius: 0 $global-radius $global-radius 0;
+		margin-left: -20px;
+  }
+  .title-text{
+		padding-left:50px;
+  }
+}
+
+.right-title{
+  position: relative;
+  .title-back{
+		background-color: $grey;
+		border-radius: $global-radius 0  0 $global-radius;
+		margin-left: 20px;
+		width: 105%;
+  }
+  .title-text{
+		padding-left:50px;
+  }
+}
+
+.title-text{
+	color:#fff;
+	position: relative;
+	z-index: 1;
+}
+.title-back{
+	-moz-transform: skew(-20deg);
+	-o-transform: skew(-20deg);
+	-webkit-transform: skew(-20deg);
+	background-color: $primary-color;
+	color: $white;
+	height: 100%;
+	left: 0;
+	padding: 15px 25px;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 0;
 }
 
 .ribbon-container{
@@ -140,4 +184,17 @@ header{
 
 .project-card .responsive-embed{
 	margin-bottom: 0;
+}
+
+// selection and location page
+
+.project-location{
+	.project{
+		padding:50px;
+	}
+	.location{
+		padding:50px;
+
+
+	}
 }
