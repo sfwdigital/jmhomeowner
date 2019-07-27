@@ -137,8 +137,8 @@ include 'includes/session.php';
 
 				$.fn.insulation_type = function(link) {
 					var type = $('input[name=insulation_type]:checked').val();
-					var blowlink = 'template-2.php';
-					var battlink = 'template-1.php';
+					var blowlink = '/template-2.php';
+					var battlink = '/template-1.php';
 					var squarefootage = $('#squarefeet').val();
 					if (type == 'blow'){
 						$.fn.jminsulationtype(blowlink, squarefootage);

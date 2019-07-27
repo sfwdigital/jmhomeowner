@@ -169,10 +169,6 @@
 <script type="text/javascript">
   jQuery(function($) {
 
-
-		// var basement = '';
-		// var attic = 'Basement';
-
 		$('.thehouse > .room').click(function() {
 			$( ".room" ).removeClass( "room-selected" );
 			$(this).addClass('room-selected');
@@ -181,7 +177,6 @@
 			var room_copy = $(this).data("room-text");
 			$( ".room-card h5" ).html(proper_title);
 			$( ".card-content p" ).html(room_copy);
-
 		});
 
 		$( "#next-button" ).click(function() {
