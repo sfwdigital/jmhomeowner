@@ -12,7 +12,7 @@ include 'includes/header.php';
 
 <div id="insulationdata">
 	<?php
-	include 'intro.php'; 
+	include 'map.php'; 
 	?>
 </div>
 

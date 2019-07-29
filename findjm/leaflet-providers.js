@@ -557,7 +557,7 @@
 		CartoDB: {
 			url: 'https://{s}.basemaps.cartocdn.com/{variant}/{z}/{x}/{y}{r}.png',
 			options: {
-				attribution: '{attribution.OpenStreetMap} &copy; <a href="https://carto.com/attributions">CARTO</a>',
+				attribution: '{attribution.OpenStreetMap}',
 				subdomains: 'abcd',
 				maxZoom: 19,
 				variant: 'light_all'
