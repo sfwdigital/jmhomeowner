@@ -186,6 +186,10 @@
         else {
           mymap.addLayer(leafletView);
         }
+
+
+
+
       //  map.setView([e.latlng.lat, e.latlng.lng], 12);
       });
     });

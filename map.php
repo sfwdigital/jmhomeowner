@@ -108,7 +108,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 				console.log(ip_zip_code);
 	      $.ajax({
 	        type: "POST",
-	        url: 'http://jmhomeowner:8888/store_data.php',
+	        url: 'store_data.php',
 					data: ({radius: radius, address: address, lnglat: lnglat, ip_zip_code: ip_zip_code}),
 	        success: function(response){
 	          $("#ajaxdata").html(response);
