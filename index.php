@@ -15,6 +15,7 @@ curl_setopt($ch, CURLOPT_HEADER, FALSE);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 	"Accept: application/json"
 ));
+$county_name='';
 	$response = curl_exec($ch);
 	curl_close($ch);
 	$array = json_decode(trim($response), TRUE);
@@ -32,21 +33,21 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 	  $ip_latitude = $array['latitude'];
 	  $ip_longitude = $array['longitude'];
 		$state = $array['region'];
-		 $city = $array['city'];
+		$city = $array['city'];
 		$ip_lnglat = ''.$ip_latitude.', '.$ip_longitude.'';
 	}
 ?>
 
 <?php
-	// $getZip = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDmm0PBYkPWc5ozsLgh20N3CLvmoIcmDN4&latlng='.$ip_latitude.','.$ip_longitude.'');
-	$getZip = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAWbCDoFMUduF33G6Ce9lCH0yFGXCfR2-Y&latlng='.$ip_latitude.','.$ip_longitude.'');
+	$getZip = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDmm0PBYkPWc5ozsLgh20N3CLvmoIcmDN4&latlng='.$ip_latitude.','.$ip_longitude.'');
 
 	$outputZip = json_decode($getZip);
+	print_r($outputZip);
 	if(!empty($outputZip)){
 		$addressData = $outputZip->results[0]->address_components;
 		foreach($addressData as $addr){
 			if($addr->types[0] == 'administrative_area_level_2'){
-				  $county_name = $addr->long_name;
+				  $county_name = $addr->short_name;
 			}
 
 		}
@@ -54,9 +55,9 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 	// $rslt_a = $db->prepare("SELECT * FROM products WHERE `product_id` = '28'");
 		include('_db_connect.php');
 		// $hashresult = $db->prepare('SELECT * FROM builder WHERE order_id = "'.$temporderno.'"');
- echo $county_name;
- echo	$state;
- echo	$ip_zip_code;
+		 echo $county_name;
+		 echo	$state;
+		 echo	$ip_zip_code;
 		$county_rslt = $db->prepare('SELECT * FROM r_codes WHERE state = "'.$state.'" AND county = "'.$county_name.'"');
 		$county_rslt->execute();
 		for($i=0; $county_rslt_row = $county_rslt->fetch(); $i++){
