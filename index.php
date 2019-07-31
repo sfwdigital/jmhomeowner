@@ -38,8 +38,8 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 ?>
 
 <?php
-	$getZip = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDmm0PBYkPWc5ozsLgh20N3CLvmoIcmDN4&latlng='.$ip_latitude.','.$ip_longitude.'');
-	// $getZip = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAWbCDoFMUduF33G6Ce9lCH0yFGXCfR2-Y&latlng='.$ip_latitude.','.$ip_longitude.'');
+	// $getZip = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDmm0PBYkPWc5ozsLgh20N3CLvmoIcmDN4&latlng='.$ip_latitude.','.$ip_longitude.'');
+	$getZip = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAWbCDoFMUduF33G6Ce9lCH0yFGXCfR2-Y&latlng='.$ip_latitude.','.$ip_longitude.'');
 
 	$outputZip = json_decode($getZip);
 	if(!empty($outputZip)){
