@@ -15,7 +15,7 @@ curl_setopt($ch, CURLOPT_HEADER, FALSE);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 	"Accept: application/json"
 ));
-$county_name='';
+// $county_name='';
 	$response = curl_exec($ch);
 	curl_close($ch);
 	$array = json_decode(trim($response), TRUE);
@@ -29,10 +29,10 @@ $county_name='';
 		$ip_lnglat = ''.$ip_latitude.', '.$ip_longitude.'';
 	}
 	if ($array['postal'] != ''){
-		$ip_zip_code = $array['postal'];
-	  $ip_latitude = $array['latitude'];
-	  $ip_longitude = $array['longitude'];
-		$state = $array['region'];
+	echo	$ip_zip_code = $array['postal'];
+	 echo $ip_latitude = $array['latitude'];
+	 echo $ip_longitude = $array['longitude'];
+	echo	$state = $array['region'];
 		$city = $array['city'];
 		$ip_lnglat = ''.$ip_latitude.', '.$ip_longitude.'';
 	}
@@ -42,7 +42,7 @@ $county_name='';
 	$getZip = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDmm0PBYkPWc5ozsLgh20N3CLvmoIcmDN4&latlng='.$ip_latitude.','.$ip_longitude.'');
 
 	$outputZip = json_decode($getZip);
-	print_r($outputZip);
+	// print_r($outputZip);
 	if(!empty($outputZip)){
 		$addressData = $outputZip->results[0]->address_components;
 		foreach($addressData as $addr){
