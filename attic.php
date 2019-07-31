@@ -1,8 +1,4 @@
-<?php
-
-include 'includes/session.php';
-
-?>
+<?php include 'includes/session.php'; ?>
 
 		<?php include 'header.php'; ?>
 		<div class="grid-container">
@@ -87,9 +83,11 @@ include 'includes/session.php';
 			<?php include 'nav.php';	?>
 		</div>
 
+		<script src="js/jm-js.js"></script>
 
 		<script type="text/javascript">
 			jQuery(function($) {
+
 				$( ".blow-depth" ).hide();
 				$( ".blow-insulation" ).hide();
 
@@ -98,8 +96,6 @@ include 'includes/session.php';
 					var link = 'template-1.php'
 					$.fn.jminsulationtype(link);
 		    });
-
-
 
 				$.fn.updateTotal = function() {
 				  var width = parseInt($('.width').val());

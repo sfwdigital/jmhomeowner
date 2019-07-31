@@ -14,3 +14,14 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  jQuery(function($) {
+
+    $(document).ready(function(){
+      // Cookies.set('progress', 'find');
+
+    })
+  });
+</script>
+<script src="js/jm-js.js"></script>

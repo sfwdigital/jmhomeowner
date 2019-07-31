@@ -156,36 +156,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="grid-x">
-			<div class="cell auto">
-				<a class="button" id="back-button" title="Back">Back</a>
-			</div>
-			<div class="cell shrink align-right">
-				<a id="next-button" class="button" title="Next">Next</a>
-			</div>
-		</div>
+		<?php include 'nav.php';	?>
+
 </div>
-
-<script type="text/javascript">
-  jQuery(function($) {
-
-		$('.thehouse > .room').click(function() {
-			$( ".room" ).removeClass( "room-selected" );
-			$(this).addClass('room-selected');
-			title = $(this).attr('id');
-			var proper_title = $(this).data("room-title");
-			var room_copy = $(this).data("room-text");
-			$( ".room-card h5" ).html(proper_title);
-			$( ".card-content p" ).html(room_copy);
-		});
-
-		$( "#next-button" ).click(function() {
-			var progress = localStorage['progress'];
-			localStorage['progress'] = "1";
-			var rvalue = $('#location-field').val();
-			var project = document.querySelector('.room-selected').id;
-			var link = 'attic.php';
-			$.fn.jminsulation(link, rvalue, project);
-		});
-  });
-</script>
+<script src="js/jm-js.js"></script>

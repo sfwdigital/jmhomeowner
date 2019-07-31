@@ -1,4 +1,4 @@
-			<div class="grid-x">
+			<!-- <div class="grid-x">
 				<div class="cell medium-10">
 					<div class="grid-x">
 						<div class="cell shrink">
@@ -13,14 +13,18 @@
 						</div>
 					</div>
 				</div>
+			</div> -->
+
+
+			<div class="grid-x">
+
+				<div class="cell auto">
+					<a class="button" id="back-button" title="Back">Back</a>
+				</div>
+				<div class="cell shrink align-right">
+					<a id="next-button" class="button" title="Next">Next</a>
+				</div>
 			</div>
 
 
-			<script type="text/javascript">
-			  jQuery(function($) {
-					$( "#map-next" ).click(function() {
-						console.log('etst');
-						$("#insulationdata").load( "map.php" );
-					});
-			  });
-			</script>
+		

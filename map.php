@@ -19,6 +19,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 	$response = curl_exec($ch);
 	curl_close($ch);
 	$array = json_decode(trim($response), TRUE);
+	print_r($array);
 
 	if ($array['postal'] == ''){
 		$ip_zip_code = '27023';
@@ -28,11 +29,12 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 
 	}
 	if ($array['postal'] != ''){
-		$ip_zip_code = $array['postal'];
-		$ip_latitude = $array['latitude'];
-		$ip_longitude = $array['longitude'];
-		$ip_lnglat = ''.$ip_latitude.', '.$ip_longitude.'';
+	echo	$ip_zip_code = $array['postal'];
+	echo	$ip_latitude = $array['latitude'];
+	echo	$ip_longitude = $array['longitude'];
+	echo	$ip_lnglat = ''.$ip_latitude.', '.$ip_longitude.'';
 	}
+	echo 'test';
 ?>
 
 
@@ -75,6 +77,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 	<div class="text-center"><h3>Loading</h3></div>
 </div>
 </div>
+<?php include 'nav.php';	?>
+
+
+<script src="js/jm-js.js"></script>
 
 <script>
 
