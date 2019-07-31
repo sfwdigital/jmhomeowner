@@ -2,7 +2,7 @@
   <div class="grid-container">
     <div class="grid-x">
       <div class="cell">
-        <img src="http://placehold.it/400x200?text=logo" alt="Johns Manville" />
+        <img src="https://placehold.it/400x200?text=logo" alt="Johns Manville" />
       </div>
     </div>
     <div class="grid-x">
