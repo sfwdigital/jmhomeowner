@@ -2,8 +2,8 @@
 
 $squarefootage = $_POST['squarefootage'];
 
-session_start();
-include 'includes/session.php';
+// session_start();
+// include 'includes/session.php';
 
 ?>
 					<!-- Template 2 -->

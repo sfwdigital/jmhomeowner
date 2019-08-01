@@ -1,4 +1,17 @@
 
+<?php
+session_start();
+echo $_SESSION['city'];
+echo $_SESSION['state'];
+echo $_SESSION['county'];
+echo $_SESSION['zipcode'];
+echo $_SESSION['climate_zone'];
+include 'includes/header.php';
+?>
+
+
+
+
 		<div class="grid-x project-location">
 			<!-- Left Side -->
 			<div class="cell medium-12">
@@ -156,6 +169,6 @@
 				</div>
 			</div>
 		</div>
-		<?php include 'nav.php';	?>
+		<?php include 'nav.php';?>
 </div>
-<script src="js/jm-js.js"></script>
+<?php include 'includes/footer.php'; ?>

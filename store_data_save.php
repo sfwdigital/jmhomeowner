@@ -6,7 +6,7 @@
   $exchange_input = $_POST['exchange_input'];
   $inside_refill_input = $_POST['inside_refill_input'];
   $outside_refill_input = $_POST['outside_refill_input'];
-  
+
 // reverse geocode start
   if (!empty($address)){
     $url= 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAWbCDoFMUduF33G6Ce9lCH0yFGXCfR2-Y&address=' . urlencode($address);
@@ -45,9 +45,7 @@
 
 
   <?php
-
     $extlinknew = $extlink.''.$exchange_url;
-
     $client = new SoapClient('https://extweb.primowater.com/StoreLocator.asmx?wsdl');
     $response = $client->GetLocations(array(
       'SecurityKey' => '$h0pPr1m00nL1nE',

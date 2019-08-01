@@ -1,4 +1,10 @@
-<?php include 'includes/session.php'; ?>
+<?php
+session_start();
+
+// include 'includes/session.php';
+include 'includes/header.php';
+echo $_SESSION["climate_zone"];
+?>
 
 		<?php include 'header.php'; ?>
 		<div class="grid-container">
@@ -82,6 +88,7 @@
 			</div>
 			<?php include 'nav.php';	?>
 		</div>
+		<?php include 'includes/footer.php'; ?>
 
 		<script src="js/jm-js.js"></script>
 
