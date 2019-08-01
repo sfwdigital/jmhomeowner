@@ -1,8 +1,24 @@
+<?php
+session_start();
+// echo session_id();
+
+$_SESSION['progress'] = 'map';
+$project_room = $_POST['project_room'];
+
+$county_name = $_SESSION['county'];
+$climate_zone_number = $_SESSION['climate_zone'];
+$ip_zip_code = $_SESSION['zipcode'];
+$city = $_SESSION['city'];
+$state = $_SESSION['state'];
+$ip_lnglat = $_SESSION['ip_lnglat'];
+include 'includes/header.php';
+?>
+
 <link rel="stylesheet" href="findjm/leaflet-min.css"/>
-<script src="findjm/leaflet.js"></script>
 <link rel="stylesheet" href="findjm/LeafletStyleSheet-min.css"/>
+
+<script src="findjm/leaflet.js"></script>
 <script src="findjm/PruneCluster.js"></script>
-<script src="findjm/leaflet-providers.js"></script>
 
 
 	<div class="location_search map-filter">
@@ -39,8 +55,9 @@
 </div>
 <?php include 'nav.php';	?>
 
+<?php include 'includes/footer.php'; ?>
+<script src="findjm/leaflet-providers.js"></script>
 
-<script src="js/jm-js.js"></script>
 
 <script>
 

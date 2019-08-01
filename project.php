@@ -1,17 +1,21 @@
 
 <?php
 session_start();
-echo session_id();
+// echo session_id();
 
-echo $_SESSION['county'];
-
+$_SESSION['progress'] = 'project';
+$county_name = $_SESSION['county'];
+$climate_zone_number = $_SESSION['climate_zone'];
+$ip_zip_code = $_SESSION['zipcode'];
+$city = $_SESSION['city'];
+$state = $_SESSION['state'];
+$project_room = $_SESSION['project_room'];
 include 'includes/header.php';
 
 
+$selected_project_room = $_POST['project_room'];
+
 ?>
-
-
-
 
 		<div class="grid-x project-location">
 			<!-- Left Side -->
@@ -123,6 +127,8 @@ include 'includes/header.php';
 				<div class="grid-x">
 					<div class="cell auto right-title">
 						<div class="title-text">
+
+
 							<h1>Your Location</h1>
 							<p>Enter your zip code below to find your R-Value.</p>
 						</div>
@@ -133,7 +139,22 @@ include 'includes/header.php';
 				<div class="grid-container location">
 					<div class="grid-x">
 						<div class="cell">
+
+						<strong>Based on your location:</strong><br />
+						<?php
+						echo 	$city.' '. $state.' '.$ip_zip_code;
+						echo '<br />'.$county_name. 'County';
+						echo '<br />You live in climate <strong>zone '.$climate_zone_number.'</strong>';
+						?>
+						</div>
+
+						<div class="cell">
+
+
+
 							<form>
+								<input id="room-field" type="hidden"/>
+
 								<div class="input-group">
 									<input class="input-group-field" id="location-field" placeholder="Enter Zip Code..." type="text" value="R-11">
 									<div class="input-group-button">
@@ -172,4 +193,36 @@ include 'includes/header.php';
 		</div>
 		<?php include 'nav.php';?>
 </div>
+
 <?php include 'includes/footer.php'; ?>
+<script type="text/javascript">
+  jQuery(function($) {
+
+
+		$('.thehouse > .room').click(function() {
+      $( ".room" ).removeClass( "room-selected" );
+      $(this).addClass('room-selected');
+      title = $(this).attr('id');
+			$("#room-field").val(title);
+
+      var proper_title = $(this).data("room-title");
+      var room_copy = $(this).data("room-text");
+      $( ".room-card h5" ).html(proper_title);
+      $( ".card-content p" ).html(room_copy);
+    });
+
+			<?php
+			if ($selected_project_room !='')  {
+				echo '$( "#'.$selected_project_room.'" ).click();';
+			}
+			?>
+
+
+
+
+
+
+
+
+  });
+</script>

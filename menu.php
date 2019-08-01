@@ -158,4 +158,3 @@
 		</div>
 		<?php include 'nav.php';	?>
 </div>
-<script src="js/jm-js.js"></script>

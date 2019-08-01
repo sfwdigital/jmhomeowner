@@ -1,8 +1,6 @@
 <?php
-//set in session and passed through ajax variables.
 $project = $_POST['project'];
 $rvalue = $_POST['rvalue'];
-//
 $squarefootage = $_POST['squarefootage'];
 $pieces = explode('-', $rvalue);
 $r_header =  '<h2>'.$pieces[0].'-<strong>'.$pieces[1].'</strong></h2>'

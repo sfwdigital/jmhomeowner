@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-echo session_id();
+// echo session_id();
 
 ini_set('session.save_path', $sessdir);
 $userip = $_SERVER['REMOTE_ADDR'];
@@ -61,13 +61,13 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
   $_SESSION['zipcode'] = $ip_zip_code;
   $_SESSION['city'] = $city;
   $_SESSION['state'] = $state;
-
+	$_SESSION['ip_lnglat'] = $ip_lnglat;
+	$_SESSION['progress'] = 'landing';
 
 ?>
 
 
 <?php include 'includes/header.php'; ?>
-<link rel="stylesheet" href="findjm/leaflet-min.css" />
 
 <div id="insulationdata">
 	<div class="grid-container">
@@ -80,7 +80,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 			<div class="cell">
 				<h1>Find Your Insulation</h1>
 				<p class="lead">Home Insulation Guide</p>
-				<a href="project.php" class="button secondary" id="getstarted" title="Get Started">Get Started</a>
+				<a  class="button secondary" id="getstarted" title="Get Started">Get Started</a>
 
 			</div>
 		</div>
@@ -89,3 +89,28 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 </div>
 
 <?php include 'includes/footer.php'; ?>
+
+<script type="text/javascript">
+jQuery(function($) {
+
+	$( "#getstarted" ).click(function() {
+		var link = 'project.php';
+		var project = '';
+		$.fn.jminsulation(link, project);
+	});
+
+
+	$.fn.jminsulation = function(link, project) {
+    $.ajax({
+      type: "POST",
+      url: link,
+      data: ({ project: project}),
+      success: function(response){
+        $("#insulationdata").html(response);
+      }
+    });
+  }
+
+});
+
+</script>

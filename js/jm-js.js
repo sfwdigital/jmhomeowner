@@ -24,18 +24,18 @@ jQuery(function($) {
     // }
   });
 
-
-
-
-  $('.thehouse > .room').click(function() {
-    $( ".room" ).removeClass( "room-selected" );
-    $(this).addClass('room-selected');
-    title = $(this).attr('id');
-    var proper_title = $(this).data("room-title");
-    var room_copy = $(this).data("room-text");
-    $( ".room-card h5" ).html(proper_title);
-    $( ".card-content p" ).html(room_copy);
-  });
+  //
+  //
+  //
+  // $('.thehouse > .room').click(function() {
+  //   $( ".room" ).removeClass( "room-selected" );
+  //   $(this).addClass('room-selected');
+  //   title = $(this).attr('id');
+  //   var proper_title = $(this).data("room-title");
+  //   var room_copy = $(this).data("room-text");
+  //   $( ".room-card h5" ).html(proper_title);
+  //   $( ".card-content p" ).html(room_copy);
+  // });
 
 
   $( "#getstarted" ).click(function() {
@@ -86,26 +86,26 @@ jQuery(function($) {
     }
   });
 
-  $( "#back-button" ).click(function() {
-     if (Cookies.get('progress')  == "map"){
-       Cookies.set('progress', 'details');
-      // $("#insulationdata").load( "attic.php" );
-      window.location.href = "attic.php";
-
-    }
-    else if (Cookies.get('progress') == 'details'){
-      Cookies.set('progress', 'project');
-      // $("#insulationdata").load( "menu.php" );
-      window.location.href = "project.php";
-
-    }
-    else if (Cookies.get('progress') == 'project'){
-      Cookies.set('progress', 'find');
-      // $("#insulationdata").load( "intro.php" );
-      window.location.href = "/";
-
-    }
-  });
+  // $( "#back-button" ).click(function() {
+  //    if (Cookies.get('progress')  == "map"){
+  //      Cookies.set('progress', 'details');
+  //     // $("#insulationdata").load( "attic.php" );
+  //     window.location.href = "attic.php";
+  //
+  //   }
+  //   else if (Cookies.get('progress') == 'details'){
+  //     Cookies.set('progress', 'project');
+  //     // $("#insulationdata").load( "menu.php" );
+  //     window.location.href = "project.php";
+  //
+  //   }
+  //   else if (Cookies.get('progress') == 'project'){
+  //     Cookies.set('progress', 'find');
+  //     // $("#insulationdata").load( "intro.php" );
+  //     window.location.href = "/";
+  //
+  //   }
+  // });
 
   $.fn.jminsulation = function(link, rvalue, project) {
     $.ajax({

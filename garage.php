@@ -1,8 +1,4 @@
-<?php include 'includes/header.php'; ?>
 
-		<?php include 'header.php'; ?>
-		<div class="grid-container">
-			<div class="grid-x align-middle">
 				<!-- Left Side -->
 				<div class="cell medium-10">
 					<div class="grid-container">
@@ -60,14 +56,86 @@
 					</div>
 				</div>
 				<!-- end Left Side -->
-				<!-- Right Side -->
-				<div class="cell medium-14">
-					<!-- IF surface_type = concrete AND living_space = no show Template 3 AND show Tip -->
-					<!-- IF surface_type = concrete AND living_space = yes show Template 1 -->
-					<!-- IF surface_type = wood show Template 3 -->
-					<?php include 'template-3.php'; ?>
-				</div>
-			</div>
-			<?php include 'nav.php'; ?>
-		</div>
-		<?php include 'includes/footer.php'; ?>
+
+				<script type="text/javascript">
+					jQuery(function($) {
+
+						$( ".blow-depth" ).hide();
+						$( ".blow-insulation" ).hide();
+
+
+						$(document).ready(function(){
+							var link = 'template-1.php'
+							$.fn.jminsulationtype(link);
+						});
+
+						$.fn.updateTotal = function() {
+							var width = parseInt($('.width').val());
+							var length = parseInt($('.length').val());
+							if (isNaN(width) || isNaN(length)) {
+								$('#squarefeet').val('Both inputs must be numbers');
+							} else {
+								var squarefootage = (((width * length)/12)/12).toFixed(2);
+								$('#squarefeet').val(squarefootage);
+							}
+						};
+
+						$.fn.jminsulationtype = function(link, squarefootage) {
+							var project = '<?php echo $project ?>';
+							var rvalue = '<?php echo $rvalue?>';
+							$.ajax({
+								type: "POST",
+								url: link,
+								data: ({squarefootage: squarefootage, project: project, rvalue: rvalue}),
+								success: function(response){
+									$("#insulation_type").html(response);
+								}
+							});
+						}
+
+						$.fn.extra_insulation = function(link) {
+							var type = $('input[name=insulation_adding]:checked').val();
+							if (type == 'yes'){
+								$( ".blow-depth" ).show('fast');
+							}
+							if (type == 'no'){
+								$( ".blow-depth" ).hide('fast');
+							}
+						};
+
+						$.fn.insulation_type = function(link) {
+							var type = $('input[name=insulation_type]:checked').val();
+							var blowlink = 'template-2.php';
+							var battlink = 'template-1.php';
+							var squarefootage = $('#squarefeet').val();
+							if (type == 'blow'){
+								$.fn.jminsulationtype(blowlink, squarefootage);
+								$( ".blow-insulation" ).show('fast');
+							}
+							if (type == 'batt'){
+								$.fn.jminsulationtype(battlink, squarefootage);
+								$( ".blow-insulation" ).hide('fast');
+							}
+						};
+
+						$('.width').focusout(function() {
+							$.fn.updateTotal();
+							$.fn.insulation_type();
+						});
+
+						$('.length').focusout(function() {
+							$.fn.updateTotal();
+							$.fn.insulation_type();
+						});
+
+						$("input[name=insulation_type]").change(function(){
+							$.fn.updateTotal();
+							$.fn.insulation_type();
+						});
+
+						$("input[name=insulation_adding]").change(function(){
+							$.fn.extra_insulation();
+						});
+
+					});
+				</script>
