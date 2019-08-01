@@ -29,19 +29,15 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 		$ip_lnglat = ''.$ip_latitude.', '.$ip_longitude.'';
 	}
 	if ($array['postal'] != ''){
-	echo	$ip_zip_code = $array['postal'];
-	 // echo $ip_latitude = $array['latitude'];
-	 // echo $ip_longitude = $array['longitude'];
-	 $ip_latitude = '36.099861';
-	 $ip_longitude ='-80.244217';
-	echo	$state = $array['region'];
+		$ip_zip_code = $array['postal'];
+	  $ip_latitude = $array['latitude'];
+	  $ip_longitude = $array['longitude'];
+		$state = $array['region'];
 		$city = $array['city'];
 		$ip_lnglat = ''.$ip_latitude.', '.$ip_longitude.'';
 	}
-?>
 
-<?php
-	$getZip = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDmm0PBYkPWc5ozsLgh20N3CLvmoIcmDN4&latlng='.$ip_latitude.','.$ip_longitude.'');
+	 $getZip = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDmm0PBYkPWc5ozsLgh20N3CLvmoIcmDN4&latlng='.$ip_latitude.','.$ip_longitude.'');
 
 	$outputZip = json_decode($getZip);
 	print_r($outputZip);
