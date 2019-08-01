@@ -1,10 +1,9 @@
 
 <?php
-session_start(); // For having the access to the session,this line must be written in the start of every PHP page.
+session_start();
+echo session_id();
 
-$_SESSION["a"]="value 1";
-$_SESSION["b"]="value 2";
-
+ini_set('session.save_path', $sessdir);
 $userip = $_SERVER['REMOTE_ADDR'];
 $ch = curl_init();
 $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -62,6 +61,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
   $_SESSION['zipcode'] = $ip_zip_code;
   $_SESSION['city'] = $city;
   $_SESSION['state'] = $state;
+
 
 ?>
 

@@ -1,12 +1,13 @@
 
 <?php
 session_start();
-echo $_SESSION['city'];
-echo $_SESSION['state'];
+echo session_id();
+
 echo $_SESSION['county'];
-echo $_SESSION['zipcode'];
-echo $_SESSION['climate_zone'];
+
 include 'includes/header.php';
+
+
 ?>
 
 
