@@ -198,3 +198,38 @@ header{
 
 	}
 }
+#insulationdata{
+	display: block;
+	height: auto;
+	margin:10px auto;
+	max-width: 1200px;
+	overflow: hidden;
+}
+.r-value-heading{
+	background-color: $blue;
+}
+.project-location .location{
+	border-left: 1px solid grey;
+	margin: 10px 0px 0px -20px;
+	padding: 10px 0px 0px 50px;
+}
+.callout-bg{
+	background-color: $white;
+	border-radius: $global-radius;
+	padding: 20px;
+	.rvalue-heading{
+		background-color:$blue;
+		border-radius: $global-radius;
+		color:$white;
+		h4{
+    margin-bottom: 0px;
+		padding: 5px;
+		}
+	}
+}
+.r-map{
+	img{
+		max-width: 370px;
+		padding-top: 20px;
+	}
+}

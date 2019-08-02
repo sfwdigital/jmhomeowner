@@ -11,25 +11,38 @@ $city = $_SESSION['city'];
 $state = $_SESSION['state'];
 $project_room = $_SESSION['project_room'];
 include 'includes/header.php';
-
-
 $selected_project_room = $_POST['project_room'];
 
 ?>
-
+<div class="grid-x">
+	<div class="cell medium-12">
+		<div class="grid-x">
+			<div class="cell auto left-title">
+				<div class="title-text">
+					<h1>Project</h1>
+					<p>Choose your project type below.</p>
+				</div>
+				<div class="title-back"></div>
+			</div>
+		</div>
+	</div>
+	<div class="cell medium-12 hide-for-small-only">
+		<div class="grid-x">
+			<div class="cell auto right-title">
+				<div class="title-text">
+					<h1>Your Location</h1>
+					<p>Enter your zip code below to find your R-Value.</p>
+				</div>
+				<div class="title-back"></div>
+			</div>
+		</div>
+	</div>
+</div>
 		<div class="grid-x project-location">
 			<!-- Left Side -->
 			<div class="cell medium-12">
 				<!-- Heading -->
-				<div class="grid-x">
-					<div class="cell auto left-title">
-						<div class="title-text">
-							<h1>Project</h1>
-							<p>Choose your project type below.</p>
-						</div>
-						<div class="title-back"></div>
-					</div>
-				</div>
+
 				<!-- Content -->
 				<div class="grid-container project">
 					<div class="grid-x">
@@ -124,11 +137,9 @@ $selected_project_room = $_POST['project_room'];
 			<!-- Right Side -->
 			<div class="cell medium-12">
 				<!-- Heading -->
-				<div class="grid-x">
+				<div class="grid-x show-for-small-only">
 					<div class="cell auto right-title">
 						<div class="title-text">
-
-
 							<h1>Your Location</h1>
 							<p>Enter your zip code below to find your R-Value.</p>
 						</div>
@@ -140,23 +151,19 @@ $selected_project_room = $_POST['project_room'];
 					<div class="grid-x">
 						<div class="cell">
 
-						<strong>Based on your location:</strong><br />
+						<strong>Your location:</strong><br />
 						<?php
-						echo 	$city.' '. $state.' '.$ip_zip_code;
-						echo '<br />'.$county_name. 'County';
-						echo '<br />You live in climate <strong>zone '.$climate_zone_number.'</strong>';
+						echo 	$city.' '. $state.' '.$ip_zip_code.' '.$county_name.'County' ;
 						?>
 						</div>
 
 						<div class="cell">
 
-
-
 							<form>
 								<input id="room-field" type="hidden"/>
 
 								<div class="input-group">
-									<input class="input-group-field" id="location-field" placeholder="Enter Zip Code..." type="text" value="R-11">
+									<input class="input-group-field" id="location-field" placeholder="Enter Zip Code..." type="text">
 									<div class="input-group-button">
 										<input type="submit" class="button" value="Submit">
 										<!-- <input type="submit" class="button secondary" value="Find Me"> -->
@@ -166,12 +173,12 @@ $selected_project_room = $_POST['project_room'];
 						</div>
 					</div>
 					<div class="callout-bg text-center">
-						<div class="grid-x">
+						<div class="grid-x grid-margin-x">
 							<div class="cell small-6 rvalue-heading">
-								<h4>Zone</h4>
+								<h4>Zone <?php echo $climate_zone_number; ?></h4>
 							</div>
 							<div class="cell small-18 rvalue-heading">
-								<h4>R-Value</h4>
+								<h4>R-11</h4>
 							</div>
 						</div>
 						<div class="grid-x">
@@ -184,7 +191,7 @@ $selected_project_room = $_POST['project_room'];
 						</div>
 					</div>
 					<div class="grid-x text-center">
-						<div class="cell auto">
+						<div class="cell auto r-map">
 							<img src="images/r-value-map.png" alt="Energy Star Recommendations by Zone" />
 						</div>
 					</div>
@@ -216,12 +223,6 @@ $selected_project_room = $_POST['project_room'];
 				echo '$( "#'.$selected_project_room.'" ).click();';
 			}
 			?>
-
-
-
-
-
-
 
 
   });
